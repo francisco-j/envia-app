@@ -28,4 +28,9 @@
   nav a.router-link-exact-active {
     color: #42b983;
   }
+
+  /* normalize */
+  h1 {
+    margin: 0;
+  }
 </style>

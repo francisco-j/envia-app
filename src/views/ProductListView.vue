@@ -7,7 +7,7 @@
     msg: String
   })
 
-  const products = ref(undefined) // is an array
+  const products = ref([]) // is an array
 
   onMounted(async() => {
     const response = await productsService.getAll();
@@ -17,7 +17,21 @@
 
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <ProductCard msg="Welcome to Your Vue.js App"/>
+    <h1>Nuestros productos</h1>
+    <div class="productsContainer">
+      <ProductCard v-for="product in products"
+        :product="product"
+      />
+    </div>
   </div>
 </template>
+
+<style scoped>
+  .productsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin: 32px auto 0;
+    max-width: 900px;
+  }
+</style>

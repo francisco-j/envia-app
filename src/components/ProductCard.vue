@@ -1,33 +1,51 @@
 <script setup>
-  defineProps({
-    msg: String
+  const props = defineProps({
+    product: Object
   })
 
+  console.log({props: props});
+  console.log(props.product);
 </script>
 
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <ul>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target="_blank" rel="noopener">babel</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-router" target="_blank" rel="noopener">router</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint" target="_blank" rel="noopener">eslint</a></li>
-      <li><a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank" rel="noopener">Forum</a></li>
-    </ul>
+  <div class="productCard">
+    <img class="productCard__img"
+      :alt="product.name" :src="product.imageUrl"
+    />
+
+    <div class="productCard__textContainer">
+      <span class="productCard__title">{{ product.name }}</span>
+      <span>SKU: {{product.sku}}</span>
+      <span>${{product.price}}</span>
+    </div>
   </div>
 </template>
 
 <style scoped>
-  ul {
-    list-style-type: none;
-    padding: 0;
+  .productCard {
+    display: flex;
+    flex-direction: row;
+    gap: 32px;
+    padding: 16px;
+    border-radius: 8px;
+    border: solid 2px rgb(51, 199, 73); 
   }
-  li {
-    display: inline-block;
-    margin: 0 10px;
+
+  .productCard__img {
+    max-width: 100px;
+    max-height: 100px;
+    object-fit: contain;
   }
-  a {
-    color: #42b983;
+
+  .productCard__textContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+  }
+
+  .productCard__title {
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 8px;
   }
 </style>
