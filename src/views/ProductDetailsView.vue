@@ -1,5 +1,71 @@
+<script setup>
+  import productsService from '@/js/services/productsService';
+  import cartService from '@/js/services/cartService';
+  import { ref, onMounted } from 'vue'
+  import { useRoute } from 'vue-router'
+  const route = useRoute()
+
+  const product = ref(null)
+
+  onMounted(async() => {
+    const response = await productsService.getById(route.params.id);
+    product.value = response.product
+  })
+
+  const addToCart = () => {
+    cartService.addToCart(product.value.id)
+  }
+</script>
+
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
+  <div v-if="!product" class="about">
+    loading
+  </div>
+  <div v-else class="about">
+    <h1>{{ product.name }}</h1>
+    <span v-if="product.subname">{{ product.subname }}</span>
+
+    <div v-if="product" class="about__container">
+      <img class="about__img"
+        :alt="product.name" :src="product.imageUrl"
+      />
+      
+      <div class="about__textContainer">
+        <button @click="addToCart">
+          agregar al carrito
+        </button>
+
+        <span v-if="product.description">
+          {{ product.description }}
+        </span>
+        <span>sku: {{ product.sku }}</span>
+        <span>${{ product.price }}
+          <span v-if="product.discount">descuento!!</span>
+        </span>
+      </div>
+    </div>
   </div>
 </template>
+
+<style scoped>
+  .about__container {
+    display: flex;
+    flex-direction: row;
+    gap: 32px;
+    margin: 32px 0;
+  }
+  .about__addBtn {
+    border-radius: 16px;
+  }
+  .about__img {
+    width: 400px;
+    max-height: 400px;
+    object-fit: contain;
+  }
+
+  .about__textContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+</style>

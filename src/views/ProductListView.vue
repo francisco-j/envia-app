@@ -19,6 +19,7 @@
   <div class="home">
     <h1>Nuestros productos</h1>
     <div class="productsContainer">
+      <!-- TODO: loader -->
       <ProductCard v-for="product in products"
         :product="product"
       />
@@ -32,6 +33,5 @@
     flex-direction: column;
     gap: 16px;
     margin: 32px auto 0;
-    max-width: 900px;
   }
 </style>

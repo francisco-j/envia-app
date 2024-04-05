@@ -1,10 +1,12 @@
 <template>
   <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-    <router-link to="/about">About</router-link>
+    <router-link to="/">Home</router-link>
+    |
+    <router-link to="/cart">Cart</router-link>
   </nav>
-  <router-view/>
+  <div class="view">
+    <router-view/>
+  </div>
 </template>
 
 <style>
@@ -27,6 +29,11 @@
 
   nav a.router-link-exact-active {
     color: #42b983;
+  }
+
+  .view {
+    max-width: 1024px;
+    margin: auto;
   }
 
   /* normalize */

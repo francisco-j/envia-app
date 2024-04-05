@@ -8,15 +8,15 @@ const routes = [
     component: ProductList
   },
   {
-    path: '/about',
-    name: 'about',
-    component: () => import('../views/ProductDetailsView.vue')
-  },
-  {
     path: '/cart',
     name: 'cart',
     component: () => import('../views/CartView.vue')
-  }
+  },
+  {
+    path: '/product/:id',
+    name: 'about',
+    component: () => import('../views/ProductDetailsView.vue')
+  },
 ]
 
 const router = createRouter({

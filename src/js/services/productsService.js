@@ -5,7 +5,7 @@ export default {
         const response = await myFetch('/products')
         return response
     },
-    getById: async () => {
+    getById: async (id) => {
         const response = await myFetch(`/products/${id}`)
         return response
     }
