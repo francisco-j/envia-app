@@ -6,6 +6,7 @@
   const route = useRoute()
 
   const product = ref(null)
+  const cart = cartService.getCart();
 
   onMounted(async() => {
     const response = await productsService.getById(route.params.id);
@@ -31,9 +32,18 @@
       />
       
       <div class="about__textContainer">
-        <button @click="addToCart">
-          agregar al carrito
-        </button>
+        <div>
+          <button
+          class="about__addBtn"
+          @click="addToCart"
+          >
+            agregar al carrito
+          </button>
+
+          <span v-if="cart[product.id]">
+            en carrito: {{cart[product.id]}}
+          </span>
+        </div>
 
         <span v-if="product.description">
           {{ product.description }}
@@ -55,8 +65,16 @@
     margin: 32px 0;
   }
   .about__addBtn {
-    border-radius: 16px;
+    background-color: #2c62ba;
+    color: #ffffff;
+    font-size: 100%;
+    padding: 16px 16px;
+    margin-bottom: 12px;
   }
+  .about__addBtn:hover {
+    background-color: #2656a3;
+  }
+
   .about__img {
     width: 400px;
     max-height: 400px;
@@ -67,5 +85,7 @@
     display: flex;
     flex-direction: column;
     gap: 8px;
+    margin-top: 8px;
+    align-items: start;
   }
 </style>

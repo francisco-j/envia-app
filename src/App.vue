@@ -40,4 +40,19 @@
   h1 {
     margin: 0;
   }
+  button {
+    box-shadow: none;
+    border-radius: 4px;
+    outline-width: 0;
+    display: inline-block;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
+    padding: 8px 4px;
+    border-width: 0;
+    font-weight: normal;
+    text-decoration: none;
+    cursor: pointer;
+  }
 </style>
