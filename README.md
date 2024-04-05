@@ -1,24 +1,14 @@
-# envia-app
+# Envia-app
 
-## Project setup
-```
-npm install
-```
+### Run in local
 
-### Compiles and hot-reloads for development
+to run in local simply type
 ```
+npm i
 npm run serve
 ```
 
-### Compiles and minifies for production
-```
-npm run build
-```
+### Results
 
-### Lints and fixes files
-```
-npm run lint
-```
-
-
-![alt text](https://github.com/[username]/[reponame]/blob/[branch]/image.jpg?raw=true)
+this is home page
+![product list](https://github.com/francisco-j/envia-app/blob/master/home.png?raw=true)
