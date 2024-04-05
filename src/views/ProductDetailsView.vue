@@ -20,7 +20,7 @@
 
 <template>
   <div v-if="!product" class="about">
-    loading
+    cargando...
   </div>
   <div v-else class="about">
     <h1>{{ product.name }}</h1>
@@ -34,8 +34,8 @@
       <div class="about__textContainer">
         <div>
           <button
-          class="about__addBtn"
-          @click="addToCart"
+            class="about__addBtn"
+            @click="addToCart"
           >
             agregar al carrito
           </button>

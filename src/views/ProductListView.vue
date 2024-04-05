@@ -3,11 +3,7 @@
   import productsService from '@/js/services/productsService';
   import { ref, onMounted } from 'vue'
 
-  defineProps({
-    msg: String
-  })
-
-  const products = ref([]) // is an array
+  const products = ref([])
 
   onMounted(async() => {
     const response = await productsService.getAll();
@@ -19,8 +15,11 @@
   <div class="home">
     <h1>Nuestros productos</h1>
     <div class="productsContainer">
-      <!-- TODO: loader -->
+      <span v-if="!products.length">
+        cargando...
+      </span>
       <ProductCard v-for="product in products"
+        :key="product.id"
         :product="product"
       />
     </div>
